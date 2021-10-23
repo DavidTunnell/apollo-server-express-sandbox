@@ -1,6 +1,5 @@
-const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
-
+const express = require("express");
 const PORT = process.env.PORT || 5001;
 const app = express();
 
@@ -16,7 +15,9 @@ const server = new ApolloServer({
 });
 
 //apply ApolloServer middleware to express server app
-server.applyMiddleware({ app });
+server.start().then(() => {
+    server.applyMiddleware({ app });
+});
 
 app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
