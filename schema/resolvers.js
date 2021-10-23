@@ -8,7 +8,15 @@ const resolvers = {
             return await users;
         },
     },
-    // Mutations: {},
+    Mutation: {
+        createUser(parent, args) {
+            const newUser = args;
+            users.push(newUser);
+            // console.log(args);
+            // console.log(users);
+            return newUser;
+        },
+    },
 };
 
 module.exports = resolvers;
